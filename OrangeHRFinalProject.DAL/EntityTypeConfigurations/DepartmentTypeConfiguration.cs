@@ -18,7 +18,8 @@ namespace OrangeHRFinalProject.DAL.EntityTypeConfigurations
                    .IsRequired();
             builder.HasMany(m => m.Employees)
                    .WithOne(m => m.Department)
-                   .HasForeignKey(m => m.DepartmentId);
+                   .HasForeignKey(m => m.DepartmentId)
+                   .OnDelete(DeleteBehavior.Restrict);
             builder.HasData(new Department { Id = 1, Description = "Bilgi İşlem" },
                             new Department { Id = 2, Description = "Halkla İlişkiler" },
                             new Department { Id = 3, Description = "İnsan Kaynakları" },

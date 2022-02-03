@@ -34,6 +34,12 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
             return list;
         }
 
+        public async Task<Company> GetActiveCompanById(int id)
+        {
+            var company= await service.GetAsync(a => a.IsActive == true) as Company;
+            return company;
+        }
+
         public async Task<List<CompanyMembershipDetailsVM>> GetMembershipDetailList()
         {
             var result = await service.GetAsync(c => c.IsActive, c => c.OrderByDescending(c => c.MembershipEndDate), true, null);

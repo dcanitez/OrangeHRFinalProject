@@ -14,6 +14,7 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Interfaces
     {
         Task<List<CompanyDetailsVM>> GetAllActiveCompanies();
         Task<List<CompanyMembershipDetailsVM>> GetMembershipDetailList();
+        Task<Company> GetActiveCompanById(int id);
     }
 
 }

@@ -3,6 +3,7 @@ using OrangeHRFinalProject.BLL.ServiceOperations.Common;
 using OrangeHRFinalProject.BLL.ServiceOperations.Interfaces;
 using OrangeHRFinalProject.DAL.Repositories.Interfaces;
 using OrangeHRFinalProject.Entities.Concretes;
+using OrangeHRFinalProject.ViewModels.Combined.ManagerViewModels.MainPageVM;
 using OrangeHRFinalProject.ViewModels.Commons.TitleViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,13 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
         {
             this.service = service;
             this.mapper = mapper;
+        }
+
+        public async Task<List<EmployeeTitleDetailsVM>> GetTitleCounts()
+        {
+            var titles = await service.GetAllAsync();
+            List<EmployeeTitleDetailsVM> list = mapper.Map<List<EmployeeTitleDetailsVM>>(titles);
+            return list;
         }
     }
 }

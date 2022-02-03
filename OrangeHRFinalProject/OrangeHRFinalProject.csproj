@@ -5,6 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\css\**" />
+    <Compile Remove="wwwroot\js\**" />
+    <Compile Remove="wwwroot\lib\**" />
+    <Content Remove="wwwroot\css\**" />
+    <Content Remove="wwwroot\js\**" />
+    <Content Remove="wwwroot\lib\**" />
+    <EmbeddedResource Remove="wwwroot\css\**" />
+    <EmbeddedResource Remove="wwwroot\js\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
+    <None Remove="wwwroot\css\**" />
+    <None Remove="wwwroot\js\**" />
+    <None Remove="wwwroot\lib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
       <PrivateAssets>all</PrivateAssets>
@@ -16,6 +31,12 @@
     <ProjectReference Include="..\OrangeHRFinalProject.BLL\OrangeHRFinalProject.BLL.csproj" />
     <ProjectReference Include="..\OrangeHRFinalProject.DAL\OrangeHRFinalProject.DAL.csproj" />
     <ProjectReference Include="..\OrangeHRFinalProject.ViewModels\OrangeHRFinalProject.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\kubra\" />
+    <Folder Include="wwwroot\siir\" />
+    <Folder Include="wwwroot\uploads\admin\excelfiles\" />
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
 {
-    public class HolidayService : ServiceBase<Holiday, IHolidayRepository, HolidayDetailsVM, HolidayCreateVM, HolidayUpdateVM>,IHolidayService
+    public class HolidayService : ServiceBase<Holiday, IHolidayRepository, CompanyDetailsVM, HolidayCreateVM, HolidayUpdateVM>,IHolidayService
     {
         private readonly IHolidayRepository service;
         private readonly IMapper mapper;
@@ -23,10 +23,10 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
             this.mapper = mapper;
         }
 
-        public async Task<List<HolidayDetailsVM>> GetAllByOrder()
+        public async Task<List<CompanyDetailsVM>> GetAllByOrder()
         {
             var result = await service.GetAsync(a => a.StartDate > DateTime.Now, a => a.OrderBy(a => a.StartDate), true, null);
-            var list = mapper.Map<List<HolidayDetailsVM>>(result);
+            var list = mapper.Map<List<CompanyDetailsVM>>(result);
             return list;
         }
     }

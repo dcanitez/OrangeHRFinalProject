@@ -8,6 +8,6 @@ namespace OrangeHRFinalProject.ViewModels.Commons.DepartmentViewModels
 {
     public class DepartmentCreateVM
     {
-
+        public string Description { get; set; }
     }
 }

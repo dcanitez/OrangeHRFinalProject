@@ -19,6 +19,7 @@ namespace OrangeHRFinalProject.Entities.Concretes
         public int NumberOfEmployees { get; set; }
         public string CompanyLogoPath { get; set; }
         public bool IsActive { get; set; }
+        public int CommentCount { get; set; } = 0;
         public DateTime? MembershipStartDate { get; set; }
         public DateTime? MembershipEndDate { get; set; }        
         public int? DistrictId { get; set; }

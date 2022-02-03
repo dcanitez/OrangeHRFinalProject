@@ -9,6 +9,7 @@ namespace OrangeHRFinalProject.ViewModels.Commons.HolidayViewModels
     public class HolidayDetailsVM
     {
         public string Description { get; set; }
-        public string Date { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 }

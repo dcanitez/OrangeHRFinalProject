@@ -71,7 +71,7 @@ namespace OrangeHRFinalProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Administration}/{action=Index}/{id?}");
             });
         }
     }

@@ -8,6 +8,6 @@ namespace OrangeHRFinalProject.ViewModels.Commons.CountryViewModels
 {
     public class CountryCreateVM
     {
-
+        public string Name { get; set; }
     }
 }

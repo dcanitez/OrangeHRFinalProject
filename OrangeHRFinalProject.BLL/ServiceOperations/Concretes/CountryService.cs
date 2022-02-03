@@ -22,5 +22,18 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
             this.service = service;
             this.mapper = mapper;
         }
+
+        public async Task<Country> FindByName(string name)
+        {
+            var country = await service.GetAsync(a => a.Name.ToLower() == name.ToLower()) as Country;
+            return country;
+        }
+
+        public async Task<List<CountryDetailsVM>> GetCountriesWithCityList()
+        {
+            var result = await service.GetAsync(null, null, true, a => a.Cities);
+            var list = mapper.Map<List<CountryDetailsVM>>(result);
+            return list;
+        }
     }
 }

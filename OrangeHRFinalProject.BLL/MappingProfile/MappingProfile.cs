@@ -7,6 +7,7 @@ using OrangeHRFinalProject.ViewModels.Combined.AdministrationViewModels;
 using OrangeHRFinalProject.ViewModels.Combined.ManagerViewModels.MainPageVM;
 using OrangeHRFinalProject.ViewModels.Commons.CommentViewModels;
 using OrangeHRFinalProject.ViewModels.Commons.CompanyViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.DepartmentViewModels;
 using OrangeHRFinalProject.ViewModels.Commons.EmployeeViewModels;
 using OrangeHRFinalProject.ViewModels.Commons.HolidayViewModels;
 using OrangeHRFinalProject.ViewModels.Commons.MembershipViewModels;
@@ -45,7 +46,7 @@ namespace OrangeHRFinalProject.BLL.MappingProfile
                 .ForMember(m => m.Name, opt => opt.MapFrom(src => src.CompanyName))
                 .ForMember(m => m.NumberOfEmployees, opt => opt.MapFrom(src => src.NumberofEmployee))
                 .ForMember(m => m.Sector, opt => opt.MapFrom(src => src.Sector));
-            CreateMap<Company, CompanyDetailsVM>();
+            CreateMap<Company, ViewModels.Commons.CompanyViewModels.CompanyDetailsVM>();
             CreateMap<CompanyUpdateVM, Company>();
 
             CreateMap<Company, CompanyMembershipDetailsVM>()
@@ -62,8 +63,9 @@ namespace OrangeHRFinalProject.BLL.MappingProfile
 
             CreateMap<HolidayCreateVM, Holiday>();
             CreateMap<Holiday, HolidayDetailsVM>()
-                .ForMember(m=>m.Description,opt=>opt.MapFrom(src=>src.Description))
-                .ForMember(m=>m.Date,opt=>opt.MapFrom(src=>src.StartDate.ToShortDateString()));
+                .ForMember(m => m.Description,opt=> opt.MapFrom(src => src.Description))
+                .ForMember(m => m.StartDate,opt=> opt.MapFrom(src => src.StartDate.ToString("dd.MM.yyy")))
+                .ForMember(m => m.EndDate,opt=> opt.MapFrom(src => src.EndDate.ToString("dd.MM.yyy")));
             CreateMap<HolidayUpdateVM, Holiday>();
 
             CreateMap<MembershipCreateVM, Membership>();
@@ -91,8 +93,22 @@ namespace OrangeHRFinalProject.BLL.MappingProfile
             CreateMap<PermissionType, PermissionTypeDetailsVM>()
                 .ForMember(m => m.TypeId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(m => m.Description, opt => opt.MapFrom(src => src.Description));
-                
-                
+
+
+            CreateMap<Title, EmployeeTitleDetailsVM>()
+                .ForMember(m => m.Title, opt => opt.MapFrom(src => src.Description))
+                .ForMember(m => m.NumberOfPersonels, opt => opt.MapFrom(src => src.Employees.Count));
+
+            CreateMap<Department, EmployeeDepartmentDetailsVM>()
+                .ForMember(m => m.DepartmentName, opt => opt.MapFrom(src => src.Description))
+                .ForMember(m => m.NumberOfPersonels, opt => opt.MapFrom(src => src.Employees.Count));
+
+            CreateMap<DepartmentCreateVM, Department>();
+            CreateMap<Department, DepartmentDetailsVM>()
+                .ForMember(m=>m.Id,opt=>opt.MapFrom(src=>src.Id))
+                .ForMember(m=>m.Description,opt=>opt.MapFrom(src=>src.Description))
+                .ForMember(m=>m.NumberOfEmployees,opt=>opt.MapFrom(src=>src.Employees.Count));
+            CreateMap<DepartmentUpdateVM, Department>();
 
         }
     }

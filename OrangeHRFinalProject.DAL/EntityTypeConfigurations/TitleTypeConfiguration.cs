@@ -11,6 +11,9 @@ namespace OrangeHRFinalProject.DAL.EntityTypeConfigurations
             builder.HasKey(m => m.Id);
             builder.Property(m => m.Description)
                    .IsRequired();
+            builder.HasMany(m => m.Employees)
+                   .WithOne(m => m.Title)
+                   .HasForeignKey(m => m.TitleId);
             builder.HasData(new Title { Id = 1,  Description = "Araştırma Mühendisi" },
                             new Title { Id = 2,  Description = "Destek Uzmanı" },
                             new Title { Id = 3,  Description = "Genel Müdür" },

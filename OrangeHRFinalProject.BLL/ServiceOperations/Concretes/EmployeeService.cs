@@ -36,5 +36,6 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
             var list = mapper.Map<List<BirthDayVM>>(employees);
             return list;
         }
+        
     }
 }

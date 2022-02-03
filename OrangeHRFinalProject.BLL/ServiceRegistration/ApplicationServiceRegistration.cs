@@ -17,10 +17,18 @@ namespace OrangeHRFinalProject.BLL.ServiceRegistration
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());            
             services.AddScoped<IUserServiceOperations, ApplicationUserService>();
+            services.AddScoped<ICityService, CityService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IDistrictService, DistrictService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IHolidayService, HolidayService>();
+            services.AddScoped<IMembershipService, MembershipService>();
+            services.AddScoped<IPermissionService, PermissionService>();
+            services.AddScoped<IPermissionTypeService, PermissionTypeService>();
+            services.AddScoped<ITitleService, TitleService>();
             //services.AddScoped(typeof(IServiceOperations<>), typeof(ServiceBase<>));
             return services;
         }
