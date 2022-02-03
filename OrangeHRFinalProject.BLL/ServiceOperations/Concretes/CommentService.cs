@@ -3,7 +3,7 @@ using OrangeHRFinalProject.BLL.ServiceOperations.Common;
 using OrangeHRFinalProject.BLL.ServiceOperations.Interfaces;
 using OrangeHRFinalProject.DAL.Repositories.Interfaces;
 using OrangeHRFinalProject.Entities.Concretes;
-using OrangeHRFinalProject.ViewModels.CommentViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.CommentViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

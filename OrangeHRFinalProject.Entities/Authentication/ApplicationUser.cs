@@ -11,6 +11,7 @@ namespace OrangeHRFinalProject.Entities.Authentication
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FieldName { get; set; }        
+        public string FieldName { get; set; }
+        public bool IsActive { get; set; }
     }
 }

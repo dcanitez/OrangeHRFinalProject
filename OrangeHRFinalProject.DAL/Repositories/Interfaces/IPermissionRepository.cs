@@ -1,4 +1,6 @@
-﻿using OrangeHRFinalProject.Entities.Concretes;
+﻿using OrangeHRFinalProject.DAL.Repositories.Common;
+
+using OrangeHRFinalProject.Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

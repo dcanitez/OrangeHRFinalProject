@@ -27,7 +27,8 @@ namespace OrangeHRFinalProject.DAL.Context
             user.NormalizedEmail = "admin@mail.com";
             user.EmailConfirmed = true;
             user.PasswordHash = passwordHasher.HashPassword(user, "123456789");
-            user.SecurityStamp = Guid.NewGuid().ToString();  
+            user.SecurityStamp = Guid.NewGuid().ToString();
+            user.IsActive = true;
             
             builder.HasData(user);            
         }

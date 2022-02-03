@@ -1,16 +1,14 @@
-﻿using OrangeHRFinalProject.Entities.Concretes;
-using OrangeHRFinalProject.ViewModels.ManagerViewModels.MainPageVM;
-using OrangeHRFinalProject.ViewModels.PermissionViewModels;
-using System;
+﻿using OrangeHRFinalProject.BLL.ServiceOperations.Common;
+using OrangeHRFinalProject.Entities.Concretes;
+using OrangeHRFinalProject.ViewModels.Combined.ManagerViewModels.MainPageVM;
+using OrangeHRFinalProject.ViewModels.Commons.PermissionViewModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OrangeHRFinalProject.BLL.ServiceOperations.Interfaces
 {
-    public interface IPermissionService:IServiceOperations<Permission,PermissionDetailsVM,PermissionCreateVM,PermissionUpdateVM>
+    public interface IPermissionService : IServiceOperations<Permission, PermissionDetailsVM, PermissionCreateVM, PermissionUpdateVM>
     {
-        Task<List<PermissionVM>> GetListWithEmployeeDetails();
+        Task<List<PermissionVM>> GetPermissionList();
     }
 }

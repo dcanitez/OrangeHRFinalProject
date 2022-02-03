@@ -3,7 +3,7 @@ using OrangeHRFinalProject.BLL.ServiceOperations.Common;
 using OrangeHRFinalProject.BLL.ServiceOperations.Interfaces;
 using OrangeHRFinalProject.DAL.Repositories.Interfaces;
 using OrangeHRFinalProject.Entities.Concretes;
-using OrangeHRFinalProject.ViewModels.HolidayViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.HolidayViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +21,13 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
         {
             this.service = service;
             this.mapper = mapper;
+        }
+
+        public async Task<List<HolidayDetailsVM>> GetAllByOrder()
+        {
+            var result = await service.GetAsync(a => a.StartDate > DateTime.Now, a => a.OrderBy(a => a.StartDate), true, null);
+            var list = mapper.Map<List<HolidayDetailsVM>>(result);
+            return list;
         }
     }
 }

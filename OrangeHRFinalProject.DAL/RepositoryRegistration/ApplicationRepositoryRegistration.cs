@@ -24,10 +24,18 @@ namespace OrangeHRFinalProject.DAL.RepositoryRegistration
             });
 
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+            services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IDistrictRepository, DistrictRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IHolidayRepository, HolidayRepository>();
+            services.AddScoped<IMembershipRepository, MembershipRepository>();
+            services.AddScoped<IPermissionRepository, PermissionRepository>();
+            services.AddScoped<IPermissionTypeRepository, PermissionTypeRepository>();
+            services.AddScoped<ITitleRepository, TitleRepository>();
 
             return services;
         }

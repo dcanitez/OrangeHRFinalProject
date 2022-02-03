@@ -2,9 +2,9 @@
 using OrangeHRFinalProject.BLL.ServiceOperations.Common;
 using OrangeHRFinalProject.BLL.ServiceOperations.Interfaces;
 using OrangeHRFinalProject.Entities.Concretes;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.LoginVM;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.PasswordVM;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.RegisterVM;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.LoginVM;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.PasswordVM;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.RegisterVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +15,14 @@ namespace OrangeHRFinalProject.Controllers
     public class AccountController : Controller
     {
         private readonly IUserServiceOperations userService;
-        private readonly ICompanyService companyService;       
-        public AccountController(IUserServiceOperations userService, ICompanyService companyService)
+        private readonly ICompanyService companyService;
+        private readonly IEmployeeService employeeService;
+
+        public AccountController(IUserServiceOperations userService, ICompanyService companyService, IEmployeeService employeeService)
         {
             this.userService = userService;
-            this.companyService = companyService;            
+            this.companyService = companyService;
+            this.employeeService = employeeService;
         }
         [HttpGet]
         public IActionResult Register()
@@ -45,35 +48,38 @@ namespace OrangeHRFinalProject.Controllers
             {
                 try
                 {
-                    if (await companyService.Add(model))
+                    var employee = await employeeService.Add(model.Employee);
+                    if (employee is not null)
                     {
-                        var result = await userService.Create(model);
-                        if (result.Succeeded)
+                        var company = await companyService.Add(model.Company);
+                        if (company is not null)
                         {
-                            var user = await userService.FindUserByEmail(model.Employee.CorporateEMail);
-                            var token = await userService.CreateToken(model);
-                            string fullName = $"{model.Employee.FirstName} {model.Employee.LastName}";
-                            string confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
-                            SendMailService.SendMail(confirmationLink, fullName);
-                            ViewBag.SuccessfulRegistration = "Kayıt başarılı bir şekilde yapılmıştır.";
-                            ViewBag.SuccessMessage = "Giriş yapmak için, Email Gelen kutunuzdaki mail doğrulama" +
-                                                        "linkine tıklayınız.";
-                        }
-                        else
-                        {
-                            foreach (var error in result.Errors)
+                            var result = await userService.Create(model);
+                            if (result.Succeeded)
                             {
-                                ModelState.AddModelError(string.Empty, error.Description);
+                                var user = await userService.FindUserByEmail(model.Employee.CorporateEMail);
+                                var token = await userService.CreateToken(model);
+                                string fullName = $"{model.Employee.FirstName} {model.Employee.LastName}";
+                                string confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+                                SendMailService.SendMail(confirmationLink, fullName);
+                                ViewBag.SuccessfulRegistration = "Kayıt başarılı bir şekilde yapılmıştır.";
+                                ViewBag.SuccessMessage = "Giriş yapmak için, Email Gelen kutunuzdaki mail doğrulama" +
+                                                            "linkine tıklayınız.";
+                            }
+                            else
+                            {
+                                foreach (var error in result.Errors)
+                                {
+                                    ModelState.AddModelError(string.Empty, error.Description);
+                                }
                             }
                         }
-
                     }
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError(string.Empty, ex.Message);
                 }
-
             }
             return View(model);
         }
@@ -89,7 +95,7 @@ namespace OrangeHRFinalProject.Controllers
             {
                 var result = await userService.EmployeeLogin(model);
                 if (result.Succeeded)
-                {                    
+                {
                     return RedirectToAction(nameof(Index), "Personel");
                 }
                 else
@@ -143,7 +149,7 @@ namespace OrangeHRFinalProject.Controllers
             }
             return View(model);
         }
-        [HttpGet]
+        [HttpGet("{userId}")]
         public async Task<IActionResult> ConfirmEmail(int userId, string token)
         {
             if (userId == 0 || token == null)
@@ -158,7 +164,7 @@ namespace OrangeHRFinalProject.Controllers
             }
             var result = await userService.ConfirmEmail(user, token);
             if (result.Succeeded)
-            {
+            {                                
                 var roleAssign = await userService.AssignRole(user.Id, CoreDefinitions.RoleManager);
                 if (roleAssign.Succeeded || roleAssign is null)
                 {
@@ -191,7 +197,7 @@ namespace OrangeHRFinalProject.Controllers
                 if (user != null && await userService.IsEmailConfirmed(user))
                 {
                     var token = await userService.CreatePasswordResetToken(user);
-                    string passwordResetLink = Url.Action("ResetPassword", "Account", new { email = model.Email, token = token }, Request.Scheme);                    
+                    string passwordResetLink = Url.Action("ResetPassword", "Account", new { email = model.Email, token = token }, Request.Scheme);
                     SendMailService.SendMail(passwordResetLink, fullName);
                     return View("ForgetPasswordConfirmation");
                 }

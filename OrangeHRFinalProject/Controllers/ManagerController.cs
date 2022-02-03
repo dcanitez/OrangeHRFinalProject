@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrangeHRFinalProject.BLL.ServiceOperations.Interfaces;
+using OrangeHRFinalProject.ViewModels.Combined.ManagerViewModels.MainPageVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,32 @@ namespace OrangeHRFinalProject.Controllers
 {
     public class ManagerController : Controller
     {
-        private readonly IManagerPanelService managerPanelService;
+        private readonly IEmployeeService employeeService;
+        private readonly IHolidayService holidayService;
+        private readonly IPermissionService permissionService;
 
-        public ManagerController(IManagerPanelService managerPanelService)
+        public ManagerController(IEmployeeService employeeService, IHolidayService holidayService, IPermissionService permissionService)
         {
-            this.managerPanelService = managerPanelService;
+            this.employeeService = employeeService;
+            this.holidayService = holidayService;
+            this.permissionService = permissionService;
         }
         public async Task<IActionResult> Index()
         {
-            var list = await managerPanelService.GetMainDetails();
-            return View(list);
+            var birthdayList = await employeeService.GetBirthdayList();
+            var permissionList = await permissionService.GetPermissionList();
+            var holidayList = await holidayService.GetAllByOrder();
+
+            ViewBag.BirthDayList = birthdayList;
+            ViewBag.PermissionList = permissionList;
+            ViewBag.HolidayList = holidayList;
+
+            ManagerMainVM vm = new ManagerMainVM
+            {
+                
+            };
+
+            return Json(vm);
         }
     }
 }

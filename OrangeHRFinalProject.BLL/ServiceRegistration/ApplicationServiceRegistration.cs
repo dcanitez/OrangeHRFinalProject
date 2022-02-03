@@ -15,8 +15,7 @@ namespace OrangeHRFinalProject.BLL.ServiceRegistration
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddScoped<IAdministrationService, AdministrationService>();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());            
             services.AddScoped<IUserServiceOperations, ApplicationUserService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ICompanyService, CompanyService>();

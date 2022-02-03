@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OrangeHRFinalProject.BLL.ServiceOperations.Interfaces;
 using OrangeHRFinalProject.Entities.Authentication;
-using OrangeHRFinalProject.ViewModels.PermissionViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.PermissionViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +12,14 @@ namespace OrangeHRFinalProject.Controllers
 {
     public class PersonelController: Controller
     {
-        private readonly IPermissionService permissionService;       
+        
+        private readonly IPermissionService permissionService;
+        private readonly IPermissionTypeService permissionTypeService;
 
-        public PersonelController(IPermissionService permissionService)
-        {
-            this.permissionService = permissionService;            
+        public PersonelController(IPermissionService permissionService,IPermissionTypeService permissionTypeService)
+        {            
+            this.permissionService = permissionService;
+            this.permissionTypeService = permissionTypeService;
         }
         [HttpGet]
         public IActionResult Index()
@@ -24,9 +27,10 @@ namespace OrangeHRFinalProject.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult CreatePermission()
+        public async Task<IActionResult> CreatePermission()
         {
-            return View();
+            var list = await permissionTypeService.GetAll();
+            return View(list);
         }
         [HttpPost]
         public async Task<IActionResult> CreatePermission(int id,PermissionCreateVM model)
@@ -34,6 +38,7 @@ namespace OrangeHRFinalProject.Controllers
             //TODO: ID bir employeeId bilgisini userManager ile yönetmek lazım!
             if (ModelState.IsValid)
             {
+                model.EmployeeId = id;
                 var result = await permissionService.Add(model);
                 if (result is not null)
                 {

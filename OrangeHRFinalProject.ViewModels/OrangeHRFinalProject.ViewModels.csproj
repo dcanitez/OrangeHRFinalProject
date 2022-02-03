@@ -4,4 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OrangeHRFinalProject.Entities\OrangeHRFinalProject.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Combined\PersonelViewModels\" />
+  </ItemGroup>
+
 </Project>

@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
 using OrangeHRFinalProject.Entities.Authentication;
 using OrangeHRFinalProject.Entities.Concretes;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.LoginVM;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.RegisterVM;
-using OrangeHRFinalProject.ViewModels.CommentViewModels;
-using OrangeHRFinalProject.ViewModels.CompanyViewModels;
-using OrangeHRFinalProject.ViewModels.EmployeeViewModels;
-using OrangeHRFinalProject.ViewModels.HolidayViewModels;
-using OrangeHRFinalProject.ViewModels.ManagerViewModels.MainPageVM;
-using OrangeHRFinalProject.ViewModels.MembershipViewModels;
+using OrangeHRFinalProject.Entities.Enums;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.RegisterVM;
+using OrangeHRFinalProject.ViewModels.Combined.AdministrationViewModels;
+using OrangeHRFinalProject.ViewModels.Combined.ManagerViewModels.MainPageVM;
+using OrangeHRFinalProject.ViewModels.Commons.CommentViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.CompanyViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.EmployeeViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.HolidayViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.MembershipViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.PermissionTypeViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.PermissionViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +48,10 @@ namespace OrangeHRFinalProject.BLL.MappingProfile
             CreateMap<Company, CompanyDetailsVM>();
             CreateMap<CompanyUpdateVM, Company>();
 
+            CreateMap<Company, CompanyMembershipDetailsVM>()
+                .ForMember(m => m.CompanyName, opt => opt.MapFrom(src => src.Name))
+                .ForMember(m => m.MembershipEndDate, opt => opt.MapFrom(src => src.MembershipEndDate.Value.ToShortDateString()));
+
             CreateMap<EmployeeCreateVM, Employee>();
             CreateMap<Employee, EmployeeDetailsVM>();
             CreateMap<EmployeeUpdateVM, Employee>();
@@ -75,6 +82,16 @@ namespace OrangeHRFinalProject.BLL.MappingProfile
             CreateMap<Permission, PermissionVM>()
                 .ForMember(m => m.EmployeeFullName, opt => opt.MapFrom(src => src.Employee.FirstName + ' ' + src.Employee.LastName))
                 .ForMember(m => m.StartDate, opt => opt.MapFrom(src => src.StartDate.ToShortDateString()));
+            CreateMap<PermissionCreateVM, Permission>()
+                .ForMember(m => m.EmployeeId, opt => opt.MapFrom(src => src.EmployeeId))
+                .ForMember(m=>m.PermissionTypeId,opt=>opt.MapFrom(src=>src.PermissionTypeId))
+                .ForMember(m=>m.StartDate,opt=>opt.MapFrom(src=>src.StartDate))
+                .ForMember(m=>m.EndDate,opt=>opt.MapFrom(src=>src.EndDate));
+
+            CreateMap<PermissionType, PermissionTypeDetailsVM>()
+                .ForMember(m => m.TypeId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(m => m.Description, opt => opt.MapFrom(src => src.Description));
+                
                 
 
         }

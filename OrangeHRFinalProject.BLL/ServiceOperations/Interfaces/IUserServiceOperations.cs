@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using OrangeHRFinalProject.Entities.Authentication;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.LoginVM;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.RegisterVM;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.LoginVM;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.RegisterVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +25,7 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Interfaces
         Task<string> CreatePasswordResetToken(ApplicationUser user);
         Task<IdentityResult> ResetPassword(ApplicationUser user, string token, string password);
         Task<IdentityResult> AssignRole(int userId, string roleName);
+        Task<List<ApplicationUser>> UserRoleListByRoleName(string roleName);
         Task SignOut();
     }
 }

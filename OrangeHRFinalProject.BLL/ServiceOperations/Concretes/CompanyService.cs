@@ -3,8 +3,9 @@ using OrangeHRFinalProject.BLL.ServiceOperations.Common;
 using OrangeHRFinalProject.BLL.ServiceOperations.Interfaces;
 using OrangeHRFinalProject.DAL.Repositories.Interfaces;
 using OrangeHRFinalProject.Entities.Concretes;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.RegisterVM;
-using OrangeHRFinalProject.ViewModels.CompanyViewModels;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.RegisterVM;
+using OrangeHRFinalProject.ViewModels.Combined.AdministrationViewModels;
+using OrangeHRFinalProject.ViewModels.Commons.CompanyViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,32 +19,27 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
         private readonly ICompanyRepository service;
         private readonly IMapper mapper;
         private readonly IEmployeeService employeeService;
-        public CompanyService(ICompanyRepository service, IMapper mapper, IEmployeeService employeeService) : base(service, mapper)
+
+        public CompanyService(ICompanyRepository service, IMapper mapper,IEmployeeService employeeService) : base(service, mapper)
         {
             this.service = service;
             this.mapper = mapper;
             this.employeeService = employeeService;
-
         }
 
-        public async Task<Company> GetByName(string companyName)
+        public async Task<List<CompanyDetailsVM>> GetAllActiveCompanies()
         {
-            var companies = await service.GetAllAsync();
-            return companies.SingleOrDefault(m => m.Name.ToLower() == companyName.ToLower());
+            var result = await service.GetAsync(a => a.IsActive == true);
+            List<CompanyDetailsVM> list = mapper.Map<List<CompanyDetailsVM>>(result);
+            return list;
         }
 
-        public async Task<bool> Add(UserRegisterVM model)
+        public async Task<List<CompanyMembershipDetailsVM>> GetMembershipDetailList()
         {
-            Employee result = await employeeService.Add(model.Employee);
-            if (result!=null)
-            {              
-                Company entity = mapper.Map<Company>(model.Company);
-                entity.Employees.Add(result);
-                var company = await service.AddAsync(entity);
-                return company != null;
-            }
-            else
-                return false;
+            var result = await service.GetAsync(c => c.IsActive, c => c.OrderByDescending(c => c.MembershipEndDate), true, null);
+            var list = mapper.Map<List<CompanyMembershipDetailsVM>>(result);
+            return list;
         }
+
     }
 }

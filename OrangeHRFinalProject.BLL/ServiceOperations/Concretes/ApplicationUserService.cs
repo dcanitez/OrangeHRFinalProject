@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using OrangeHRFinalProject.BLL.ServiceOperations.Common;
 using OrangeHRFinalProject.BLL.ServiceOperations.Interfaces;
+using OrangeHRFinalProject.DAL.Repositories.Interfaces;
 using OrangeHRFinalProject.Entities.Authentication;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.LoginVM;
-using OrangeHRFinalProject.ViewModels.AccountViewModels.RegisterVM;
+using OrangeHRFinalProject.Entities.Concretes;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.LoginVM;
+using OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.RegisterVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,18 +15,22 @@ using System.Threading.Tasks;
 
 namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
 {
-    public class ApplicationUserService:IUserServiceOperations
+    public class ApplicationUserService : IUserServiceOperations
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IEmployeeService employeeService;
+        private readonly ICompanyService companyService;        
         private readonly IMapper mapper;
 
-        public ApplicationUserService(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager,IEmployeeService employeeService,IMapper mapper)
+        public ApplicationUserService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmployeeService employeeService, ICompanyService companyService, RoleManager<ApplicationRole> roleManager, IMapper mapper)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.employeeService = employeeService;
+            this.companyService = companyService;
+            this.roleManager = roleManager;            
             this.mapper = mapper;
         }
 
@@ -53,17 +59,16 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
         {
             SignInResult result = null;
             var user = await userManager.FindByEmailAsync(model.CorporeateEMail);
-            var employee = await employeeService.GetByEmail(model.CorporeateEMail);
-            if (user is not null && employee.IsActive && await userManager.IsInRoleAsync(user,CoreDefinitions.RoleEmployee))
+            if (user is not null && user.IsActive && await userManager.IsInRoleAsync(user, CoreDefinitions.RoleEmployee))
             {
                 result = await signInManager.PasswordSignInAsync(model.CorporeateEMail, model.Password, false, false);
-            }            
+            }
             return result;
         }
         public async Task<SignInResult> ManagerLogin(ManagerLoginVM model)
         {
-            var user = userManager.Users.SingleOrDefault(m => m.FieldName == model.FieldName);            
-            if (user!=null && await userManager.IsInRoleAsync(user,CoreDefinitions.RoleManager))
+            var user = userManager.Users.SingleOrDefault(m => m.FieldName == model.FieldName);
+            if (user != null && user.IsActive && await userManager.IsInRoleAsync(user, CoreDefinitions.RoleManager))
             {
                 var result = await signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 return result;
@@ -74,13 +79,13 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
         public async Task<SignInResult> AdminLogin(AdminLoginVM model)
         {
             SignInResult result = null;
-            var user = await userManager.FindByEmailAsync(model.Email);            
-            if (user is not null && await userManager.IsInRoleAsync(user, CoreDefinitions.RoleAdmin))
+            var user = await userManager.FindByEmailAsync(model.Email);
+            if (user is not null && user.IsActive && await userManager.IsInRoleAsync(user, CoreDefinitions.RoleAdmin))
             {
                 result = await signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
             }
             return result;
-        }              
+        }
         public async Task<IdentityResult> ConfirmEmail(ApplicationUser user, string token)
         {
             return await userManager.ConfirmEmailAsync(user, token);
@@ -127,5 +132,20 @@ namespace OrangeHRFinalProject.BLL.ServiceOperations.Concretes
             return await userManager.GeneratePasswordResetTokenAsync(user);
         }
 
+        public async Task<List<ApplicationUser>> UserRoleListByRoleName(string roleName)
+        {
+            List<ApplicationUser> userList = new List<ApplicationUser>();
+
+            foreach (var item in userManager.Users.Where(u => !u.UserName.Contains("admin")).ToList())
+            {
+                if (await userManager.IsInRoleAsync(item, roleName))
+                {
+                    userList.Add(item);
+                }
+            }
+            return userList;
+        }
+
+        
     }
 }
