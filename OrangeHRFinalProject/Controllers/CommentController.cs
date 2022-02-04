@@ -36,12 +36,20 @@ namespace OrangeHRFinalProject.Controllers
             //return View();
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Details(int id)
-        //{
-        //    var comment = await commentService.GetByIdWithDetails(id);
-        //    return View(comment);
-        //}
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            //var comment = await commentService.GetByIdWithDetails(id);
+
+            CommentDetailsVM comment = new CommentDetailsVM
+            {
+                CompanyName = "Burger King",
+                CommentId = 1,
+                ShortDescription = "Dijitalin yeni manuel olduğu dünyada şirket ve çalışanları bir araya getirecek interaktif İK sistemine Kolay İK ile kavuştuk. DİLAYYLAYYY",
+                NumberOfEmployees = 1
+            };
+            return PartialView("_DetailsPartial", comment);
+        }
 
     }
 }

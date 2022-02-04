@@ -51,7 +51,7 @@ namespace OrangeHRFinalProject.Controllers
             return Json(vm);
         }
 
-        [HttpPost("{userId}")]
+        [HttpPost]
         public async Task<IActionResult> AddComment(int userId,CommentCreateVM model)
         {
             if (ModelState.IsValid)
