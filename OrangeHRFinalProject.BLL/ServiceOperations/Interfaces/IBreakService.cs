@@ -1,0 +1,16 @@
+﻿using OrangeHRFinalProject.BLL.ServiceOperations.Common;
+using OrangeHRFinalProject.Entities.Concretes;
+using OrangeHRFinalProject.ViewModels.Commons.BreakViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OrangeHRFinalProject.BLL.ServiceOperations.Interfaces
+{
+    public interface IBreakService:IServiceOperations<Break,BreakDetailsVM,BreakCreateVM,BreakUpdateVM>
+    {
+
+    }
+}
