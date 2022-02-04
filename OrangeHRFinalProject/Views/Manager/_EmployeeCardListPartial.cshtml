@@ -1,0 +1,53 @@
+﻿@model 
+
+<div>
+    <div class="u-body">
+        <section class="u-clearfix u-section-1" id="sec-4ca0">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <span class="u-file-icon u-icon u-icon-1" data-href="Kart.html#sec-4ca0" data-page-id="1380828074"><img src="images/1499451.png" alt=""></span><span class="u-file-icon u-icon u-icon-2" data-href="Liste.html#sec-2003" data-page-id="434905527"><img src="images/1499102.png" alt=""></span>
+            </div>
+        </section>
+        <section class="u-align-center u-clearfix u-section-2" id="carousel_0f14">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <div class="u-expanded-width u-list u-list-1">
+                    <div class="u-repeater u-repeater-1">
+                        @foreach (var item in collection)
+                        {
+                            <div class="u-align-center u-container-style u-custom-item u-grey-5 u-list-item u-repeater-item u-list-item-1">
+                                <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-1">
+                                    <div alt="" class="u-image u-image-circle u-image-1" data-image-width="600" data-image-height="600"></div>
+                                    <div><img src="@item.foto" alt="Alternate Text" />
+                                    <h5 class="u-text u-text-default u-text-1"> Burcu Mertoğlu</h5>
+                                    <h6 class="u-text u-text-default u-text-2">Developer</h6>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="u-backlink u-clearfix u-grey-80">
+            <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+                <span>Website Templates</span>
+            </a>
+            <p class="u-text">
+                <span>created with</span>
+            </p>
+            <a class="u-link" href="" target="_blank">
+                <span>Website Builder Software</span>
+            </a>.
+        </section><span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px; display: none;" class="u-back-to-top u-icon u-icon-circle u-opacity u-opacity-85 u-palette-1-base u-spacing-15" data-href="#">
+            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
+            <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
+        </span>
+
+        <style>
+            .u-disable-duration * {
+                transition-duration: 0s !important;
+            }
+        </style>
+    </div>
+</div>
