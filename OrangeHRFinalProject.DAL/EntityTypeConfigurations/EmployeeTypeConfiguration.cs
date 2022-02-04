@@ -27,7 +27,28 @@ namespace OrangeHRFinalProject.DAL.EntityTypeConfigurations
             builder.HasMany(m => m.Permissions)
                    .WithOne(e => e.Employee)
                    .HasForeignKey(e => e.EmployeeId);
-
+            builder.HasMany(m => m.Expenses)
+                   .WithOne(m => m.Employee)
+                   .HasForeignKey(m => m.EmployeeId)
+                   .OnDelete(DeleteBehavior.NoAction);
+            builder.HasMany(m => m.ApprovedExpenses)
+                   .WithOne(m => m.Manager)
+                   .HasForeignKey(m => m.ApprovedBy);
+            builder.HasMany(m => m.Liabilities)
+                   .WithOne(m => m.Employee)
+                   .HasForeignKey(m => m.EmployeeId);
+            builder.HasMany(m => m.GivenLiabilities)
+                   .WithOne(m => m.Manager)
+                   .HasForeignKey(m => m.ManagerId);
+            builder.HasMany(m => m.Shifts)
+                   .WithOne(m => m.Employee)
+                   .HasForeignKey(m => m.EmployeeId);
+            builder.HasMany(m => m.GivenShifts)
+                   .WithOne(m => m.Manager)
+                   .HasForeignKey(m => m.ManagerId);
+            builder.Property(m => m.Salary)
+                   .HasColumnType("decimal")
+                   .HasPrecision(8, 2);
 
 
         }

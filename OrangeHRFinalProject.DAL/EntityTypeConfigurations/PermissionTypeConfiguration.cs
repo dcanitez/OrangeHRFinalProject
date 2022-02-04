@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OrangeHRFinalProject.Entities.Concretes;
+using OrangeHRFinalProject.Entities.Enums;
 
 namespace OrangeHRFinalProject.DAL.EntityTypeConfigurations
 {
-    public class PermissionTypeConfifuration : IEntityTypeConfiguration<Permission>
+    public class PermissionTypeConfiguration : IEntityTypeConfiguration<Permission>
     {
         public void Configure(EntityTypeBuilder<Permission> builder)
         {
@@ -15,6 +16,12 @@ namespace OrangeHRFinalProject.DAL.EntityTypeConfigurations
             builder.HasOne(m => m.Employee)
                    .WithMany(m => m.Permissions)
                    .HasForeignKey(m => m.EmployeeId);
+            builder.HasOne(m => m.Manager)
+                   .WithMany(m => m.GivenPermissions)
+                   .HasForeignKey(m => m.ManagerId)
+                   .OnDelete(DeleteBehavior.NoAction);
+            builder.Property(m => m.Status)
+                   .HasDefaultValue(Status.Pending);
         }
     }
 }

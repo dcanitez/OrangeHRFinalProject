@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OrangeHRFinalProject.DAL.Context
 {
-    public static class ModelBuilderExtensions
+    public static class ModelBuilderExtension
     {
         public static void ApplyAllConfigurationsFromCurrentAssembly(this ModelBuilder modelBuilder, Assembly assembly,string configNameSpace="")
         {           

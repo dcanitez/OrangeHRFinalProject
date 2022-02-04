@@ -4,7 +4,7 @@ using OrangeHRFinalProject.Entities.Concretes;
 
 namespace OrangeHRFinalProject.DAL.EntityTypeConfigurations
 {
-    public class PermissionTypeTypeConfifuration : IEntityTypeConfiguration<PermissionType>
+    public class PermissionTypeTypeConfiguration : IEntityTypeConfiguration<PermissionType>
     {
         public void Configure(EntityTypeBuilder<PermissionType> builder)
         {

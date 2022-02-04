@@ -21,6 +21,7 @@ namespace OrangeHRFinalProject.DAL.Context
         {
             this.passwordHasher = passwordHasher;
         }
+        public DbSet<Break> Breaks{ get; set; }
         public DbSet<City> Cities{ get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Company> Companies{ get; set; }
@@ -28,10 +29,16 @@ namespace OrangeHRFinalProject.DAL.Context
         public DbSet<Department> Departments{ get; set; }
         public DbSet<District> Districts{ get; set; }
         public DbSet<Employee> Employees{ get; set; }
+        public DbSet<Expense> Expenses{ get; set; }
+        public DbSet<ExpenseType> ExpenseTypes{ get; set; }
         public DbSet<Holiday> Holidays { get; set; }
+        public DbSet<Liability> Liabilities { get; set; }
+        public DbSet<LiabilityCategory> LiabilityCategories { get; set; }
         public DbSet<Membership> Memberships{ get; set; }
         public DbSet<Permission> Permissions{ get; set; }
         public DbSet<PermissionType> PermissionTypes { get; set; }
+        public DbSet<Receipt> Receipts { get; set; }
+        public DbSet<Shift> Shifts { get; set; }
         public DbSet<Title> Titles{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

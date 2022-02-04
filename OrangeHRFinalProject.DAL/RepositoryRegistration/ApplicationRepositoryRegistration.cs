@@ -24,6 +24,7 @@ namespace OrangeHRFinalProject.DAL.RepositoryRegistration
             });
 
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+            services.AddScoped<IBreakRepository, BreakRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
@@ -31,10 +32,16 @@ namespace OrangeHRFinalProject.DAL.RepositoryRegistration
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IDistrictRepository, DistrictRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<IExpenseTypeRepository, ExpenseTypeRepository>();
             services.AddScoped<IHolidayRepository, HolidayRepository>();
+            services.AddScoped<ILiabilityRepository, LiabilityRepository>();
+            services.AddScoped<ILiabilityCategoryRepository, LiabilityCategoryRepository>();
             services.AddScoped<IMembershipRepository, MembershipRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IPermissionTypeRepository, PermissionTypeRepository>();
+            services.AddScoped<IReceiptRepository, ReceiptRepository>();
+            services.AddScoped<IShiftRepository, ShiftRepository>();
             services.AddScoped<ITitleRepository, TitleRepository>();
 
             return services;
