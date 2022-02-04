@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\kubra\managerpanel\lib\" />
     <Folder Include="wwwroot\siir\" />
     <Folder Include="wwwroot\uploads\admin\excelfiles\" />
     <Folder Include="wwwroot\uploads\companies\images\logos\" />
@@ -1728,6 +1729,8 @@
     <None Include="wwwroot\kubra\comment\images\resmi.webp" />
     <None Include="wwwroot\kubra\comment\jquery.js" />
     <None Include="wwwroot\kubra\comment\nicepage.js" />
+    <None Include="wwwroot\kubra\managerpanel\images\1.svg" />
+    <None Include="wwwroot\kubra\managerpanel\images\2.svg" />
     <None Include="wwwroot\vendors\%40popperjs\popper.min.js" />
     <None Include="wwwroot\vendors\bootstrap\bootstrap.min.js" />
     <None Include="wwwroot\vendors\bootstrap\bootstrap.min.js.map" />
