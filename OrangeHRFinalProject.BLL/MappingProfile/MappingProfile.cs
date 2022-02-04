@@ -79,7 +79,8 @@ namespace OrangeHRFinalProject.BLL.MappingProfile
                 .ForMember(m => m.LastName, opt => opt.MapFrom(src => src.Employee.LastName))
                 .ForMember(m=>m.PhotoFilePath,opt=>opt.MapFrom(src=>src.Employee.PhotoFilePath))
                 .ForMember(m=>m.CompanyName,opt=>opt.MapFrom(src=>src.Employee.Company.Name))
-                .ForMember(m=>m.CompanyLogoPath,opt=>opt.MapFrom(src=>src.Employee.Company.CompanyLogoPath));
+                .ForMember(m=>m.CompanyLogoPath,opt=>opt.MapFrom(src=>src.Employee.Company.CompanyLogoPath))
+                .ForMember(m=>m.NumberOfEmployees,opt=>opt.MapFrom(src=>src.Employee.Company.NumberOfEmployees));
 
             CreateMap<Permission, PermissionVM>()
                 .ForMember(m => m.EmployeeFullName, opt => opt.MapFrom(src => src.Employee.FirstName + ' ' + src.Employee.LastName))

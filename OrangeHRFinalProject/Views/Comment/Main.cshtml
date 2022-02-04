@@ -1,0 +1,136 @@
+﻿@model IEnumerable<CommentDetailsVM>
+
+<div>
+    <section class="u-clearfix u-section-1 " id="carousel_8f57">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <p class="u-align-justify-lg u-align-justify-xl u-custom-font u-font-montserrat u-text u-text-1 pt-5"> 1000'lerce insan kaynakları profesyoneli ile hep beraber İK'yı kolaylaştırıyoruz.</p>
+            <h6 class="u-custom-font u-text u-text-default u-text-font u-text-2">KULLANICI HİKAYELERİ</h6>
+
+            <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+                <div class="u-layout">
+                    <div class="u-layout-row">
+                        @foreach (var comment in Model)
+                        {
+
+                            <div class="u-align-left-md u-align-left-sm u-align-left-xs u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+                                <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-1">
+                                    <h6 class="u-align-left u-custom-font u-font-montserrat u-text u-text-default u-text-3"> @comment.CompanyName.ToUpper() </h6>
+                                    <p class="u-align-justify-lg u-align-justify-xl u-custom-font u-font-montserrat u-text u-text-4"> @comment.ShortDescription </p>
+                                    <a class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-5-light-1 u-palette-4-base u-radius-50 u-btn-1" asp-action="Details" asp-controller="Comment" asp-route-id="@comment.CommentId">İNCELE</a>
+                                    <div class="u-image u-image-circle u-image-contain u-image-1" alt="" data-image-width="2000" data-image-height="2000" src="~/kubra/comment/images/burger-king-logo.png">
+                                    </div>
+                                    <p class="u-align-justify-lg u-align-justify-xl u-custom-font u-font-montserrat u-text u-text-5">@comment.NumberOfEmployees Çalışan</p>
+                                </div>
+                            </div>
+
+                        }
+
+                        @*<div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                            <div class="u-container-layout u-container-layout-2">
+                                <div class="u-image u-image-circle u-image-2" alt="" data-image-width="500" data-image-height="500"></div>
+                                <p class="u-align-justify-lg u-align-justify-xl u-custom-font u-font-montserrat u-text u-text-6">1000+ Çalışan</p>
+                                <h6 class="u-align-justify-lg u-align-justify-xl u-custom-font u-font-montserrat u-text u-text-7">COCACOLA TÜRKİYE</h6>
+                                <p class="u-align-justify u-custom-font u-font-montserrat u-text u-text-8"> Kolay İK, Performans Değerlendirme uygulamasının sağladığı kullanım kolaylığı ve raporlama özellikleri ile operasyonel süreçlerimizi hızlandırıyor.</p>
+                                <a asp-action="Details" asp-controller="Comment" class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-5-light-1 u-palette-4-base u-radius-50 u-btn-2">İNCELE</a>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="u-align-center u-clearfix u-section-2" id="carousel_a74b">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <h6 class="u-custom-font u-text u-text-default u-text-font u-text-1">KULLANICILARIMIZ</h6>
+            <div class="u-list u-list-1">
+                <div class="u-repeater u-repeater-1">
+                    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" data-animation-name="flipIn" data-animation-duration="2000" data-animation-direction="X">
+                        <div class="u-container-layout u-similar-container u-container-layout-1">
+                            <div alt="" class="u-image u-image-circle u-image-1" data-image-width="500" data-image-height="500"></div>
+                            <p class="u-text u-text-2">Performans değerlendirme uygulaması ve raporlama özellikleri ile süreçlerimizi hızlandırıyor.</p>
+                            <h6 class="u-text u-text-default u-text-palette-3-base u-text-3">stella larson</h6>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" data-animation-name="flipIn" data-animation-duration="2000" data-animation-direction="X">
+                        <div class="u-container-layout u-similar-container u-container-layout-2">
+                            <div alt="" class="u-image u-image-circle u-image-contain u-image-2" data-image-width="4944" data-image-height="1950"></div>
+                            <p class="u-text u-text-4"> Dijitalin yeni manuel olduğu dünyada şirket ve çalışanları bir araya getirecek interaktif İK sistemine Kolay İK ile kavuştuk.</p>
+                            <h6 class="u-text u-text-default u-text-palette-3-base u-text-5">nick jhonson</h6>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" data-animation-name="flipIn" data-animation-duration="2000" data-animation-direction="X">
+                        <div class="u-container-layout u-similar-container u-container-layout-3">
+                            <div alt="" class="u-image u-image-circle u-image-contain u-image-3" data-image-width="300" data-image-height="220"></div>
+                            <p class="u-text u-text-6"> Dijitalin yeni manuel olduğu dünyada şirket ve çalışanları bir araya getirecek interaktif İK sistemine Kolay İK ile kavuştuk.</p>
+                            <h6 class="u-text u-text-default u-text-palette-3-base u-text-7">olga ivanova</h6>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" data-animation-name="flipIn" data-animation-duration="2000" data-animation-direction="X">
+                        <div class="u-container-layout u-similar-container u-container-layout-4">
+                            <div alt="" class="u-image u-image-circle u-image-4" data-image-width="2000" data-image-height="2000"></div>
+                            <p class="u-text u-text-8"> Performans değerlendirme uygulaması ve raporlama özellikleri ile süreçlerimizi hızlandırıyor.</p>
+                            <h6 class="u-text u-text-default u-text-palette-3-base u-text-9">paul hudson</h6>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" data-animation-name="flipIn" data-animation-duration="2000" data-animation-direction="X">
+                        <div class="u-container-layout u-similar-container u-container-layout-5">
+                            <div alt="" class="u-image u-image-circle u-image-contain u-image-5" data-image-width="296" data-image-height="170"></div>
+                            <p class="u-text u-text-10"> Dijitalin yeni manuel olduğu dünyada şirket ve çalışanları bir araya getirecek interaktif İK sistemine Kolay İK ile kavuştuk.</p>
+                            <h6 class="u-text u-text-default u-text-palette-3-base u-text-11">cash hudson</h6>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" data-animation-name="flipIn" data-animation-duration="2000" data-animation-direction="X">
+                        <div class="u-container-layout u-similar-container u-container-layout-6">
+                            <div alt="" class="u-image u-image-circle u-image-6" data-image-width="280" data-image-height="280"></div>
+                            <p class="u-text u-text-12"> Performans değerlendirme uygulaması ve raporlama özellikleri ile süreçlerimizi hızlandırıyor.</p>
+                            <h6 class="u-text u-text-default u-text-palette-3-base u-text-13">mike perry</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="u-align-center u-clearfix u-valign-middle u-section-3" id="carousel_e598">
+        <div class="u-expanded-width u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-on-hover u-gallery-1">
+            <div class="u-gallery-inner u-gallery-inner-1">
+                <div class="u-effect-fade u-gallery-item">
+                    <div class="u-back-slide" data-image-width="1133" data-image-height="1700">
+                        <img class="u-back-image u-expanded" src="~/kubra/comment/images/3b322ff9-c21f-4b1e-9dbb-4e927246b7af.jpg">
+                    </div>
+                    <div class="u-over-slide u-shading u-over-slide-1">
+                        <h3 class="u-gallery-heading"></h3>
+                        <p class="u-gallery-text"></p>
+                    </div>
+                </div>
+                <div class="u-effect-fade u-gallery-item">
+                    <div class="u-back-slide" data-image-width="1024" data-image-height="1500">
+                        <img class="u-back-image u-expanded" src="~/kubra/comment/images/pexels-photo-4526471.jpeg">
+                    </div>
+                    <div class="u-over-slide u-shading u-over-slide-2">
+                        <h3 class="u-gallery-heading"></h3>
+                        <p class="u-gallery-text"></p>
+                    </div>
+                </div>
+                <div class="u-effect-fade u-gallery-item">
+                    <div class="u-back-slide" data-image-width="2250" data-image-height="1500">
+                        <img class="u-back-image u-expanded" src="~/kubra/comment/images/pexels-photo-4506159.jpeg">
+                    </div>
+                    <div class="u-over-slide u-shading u-over-slide-3">
+                        <h3 class="u-gallery-heading"></h3>
+                        <p class="u-gallery-text"></p>
+                    </div>
+                </div>
+                <div class="u-effect-fade u-gallery-item">
+                    <div class="u-back-slide" data-image-width="721" data-image-height="1080">
+                        <img class="u-back-image u-expanded" src="~/kubra/comment/images/pexels-photo-4144101.jpeg">
+                    </div>
+                    <div class="u-over-slide u-shading u-over-slide-4">
+                        <h3 class="u-gallery-heading"></h3>
+                        <p class="u-gallery-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

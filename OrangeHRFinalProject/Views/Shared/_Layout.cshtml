@@ -3,46 +3,174 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - OrangeHRFinalProject</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"] - OrangeHR_MVCProject</title>
+    <link href="~/burak/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/burak/css/site.css" />
+    <!-- ===============================================-->
+    <!--    Favicons        -->
+    <!-- ===============================================-->
+    <link rel="shortcut icon" sizes="48X48" href="~/burak/assets/img/favicons/favicon-32x32.png">
+    <!-- ===============================================-->
+    <!--    Stylesheets     -->
+    <!-- ===============================================-->
+    <link href="~/burak/assets/css/theme.css" rel="stylesheet" />    
+    <!-- ===============================================-->
+    <!--    Stylesheets - Kubra     -->
+    <!-- ===============================================-->
+    <link rel="stylesheet" href="~/kubra/comment/nicepage.css" media="screen">
+    <link rel="stylesheet" href="~/kubra/comment/Home.css" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OrangeHRFinalProject</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+<div>
+    <nav class="navbar navbar-expand-lg fixed-top d-block bg-orange" style="height:110px; vertical-align:central;">
+        <button class="navbar-toggler" style="background-color:rgb(190, 71, 71)" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"><span class="navbar-toggler-icon"> </span></button>
+        <div class="">
+
+            <div class="collapse navbar-collapse border-top border-lg-0 mt-lg-0" id="navbarSupportedContent">
+                <ul class="navbar-nav pt-lg-0 font-base">
+                    <li class="nav-item fw-bold" data-asnchor="data-anchor"><a class="nav-link fs-3" style="color: #BE4760 !important; text-align:start !important" aria-current="page" asp-controller="Home" asp-action="Index">Home</a></li>
+
+                    <li class="nav-item fw-bold"><a class="nav-link fs-3" style="color: #BE4760 !important" asp-controller="Comment" asp-action="Main">Comments</a></li>
+                </ul>
+                <form class="form-inline navbar-nav  mx-11" style="width:500px;">
+                    <input class="form-control text-center " type="search" placeholder="How Can I Help?" aria-label="Search">
+                    <button class="btn btn-warning my-2 m-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
+                    <li class="nav-item px-2 fw-bold"><a class="nav-link fs-3 text-end" style="color: #BE4760 !important" asp-controller="Account" asp-action="EmployeeLogin">Login</a></li>
+                    <li class="nav-item  text-end px-2 fw-bold" data-anchor="data-anchor"><a class="nav-link fs-3" style="color: #BE4760 !important" href="#pricingTable">Register</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+        </div>
+    </nav>
+</div>
+<body>
+    <!-- ===============================================-->
+    <!--    Navbar     -->
+    <!-- ===============================================-->
+    <div>
+        <main role="main">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
+    <!-- ===============================================-->
+    <!--    Brands     -->
+    <!-- ===============================================-->
+    <section class="pb-lg-0  py-0">
         <div class="container">
-            &copy; 2022 - OrangeHRFinalProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row align-items-center justify-content-xl-between py-5 border-klean">
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/adidas12.png" height="40" alt="..." /></div>
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/zorlu2.png" height="40" alt="..." /></div>
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/ltb12.png" height="40" alt="..." /></div>
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/bb.png" height="40" alt="..." /></div>
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/postgre12.png" height="40" alt="..." /></div>
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    </section>
+    <!-- ===============================================-->
+    <!--    Brands     -->
+    <!-- ===============================================-->
+    <section class="pb-lg-0  py-0">
+        <hr style="box-shadow: 0 0 0 0.50rem rgb(229, 123, 92);" />
+        <div class="container">
+            <div class="row align-items-center justify-content-xl-between py-5 border-klean">
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/robinhood.png" height="40" alt="..." /></div>
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/reddit.png" height="40" alt="..." /></div>
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/upcase.png" height="40" alt="..." /></div>
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/hubspot.png" height="40" alt="..." /></div>
+                <div class="col-auto col-md-4 col-lg-auto my-3 text-xl-start"><img src="burak/assets/img/gallery/tunein.png" height="40" alt="..." /></div>
+            </div>
+        </div>
+
+    </section>
+
+    <hr style="box-shadow: 0 0 0 0.50rem rgb(229, 123, 92);" />
+
+    <section class="py-0" id="help">
+        <div class="bg-holder" style="background-image:url(burak/assets/img/gallery/footer-bg.png);background-position:center;background-size:cover;">
+        </div>
+
+        <div class="container py-0">
+            <div class="row min-vh-75 min-vh-xl-50">
+                <div class="col-6 col-md-4 col-xl-3">
+                    <h5 class="lh-lg fw-bold text-red">HOSTING</h5>
+                    <ul class="list-unstyled ">
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Shared Hosting</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">VPS Hosting</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Cloud Hosting</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Wordpress Hosting</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 col-xl-3">
+                    <h5 class="lh-lg fw-bold text-red">FEATURES</h5>
+                    <ul class="list-unstyled mb-md-4 mb-lg-0">
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Beginner Guide</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Move to Servion</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Website Builder</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Tools and Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 col-xl-3">
+                    <h5 class="lh-lg fw-bold text-red">SUPPORT</h5>
+                    <ul class="list-unstyled">
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Help Center</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Submit a Ticket</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Contact Us</a></li>
+                        <li class="lh-lg text-red"><a class="text-200 text-decoration-none" href="#!">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 ">
+                    <h5 class="lh-lg fw-bold text-red">WE ACCEPT</h5>
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item mr-2"><a class="text-decoration-none" href="#!"><img class="list-social-icon" src="burak/assets/img/gallery/visa.png" width="50" alt="..." /></a></li>
+                        <li class="list-inline-item mr-2"><a class="text-decoration-none" href="#!"><img class="list-social-icon" src="burak/assets/img/gallery/master-card.png" width="50" alt="..." /></a></li>
+                        <li class="list-inline-item mr-2"><a class="text-decoration-none" href="#!"><img class="list-social-icon" src="burak/assets/img/gallery/union-pay.png" width="50" alt="..." /></a></li>
+                        <li class="list-inline-item"><a class="text-decoration-none" href="#!"><img class="list-social-icon" src="burak/assets/img/gallery/express.png" width="50" alt="..." /></a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="box-shadow: 0 0 0 0.50rem rgb(229, 123, 92);" />
+            <div class="row flex-center">
+                <div class="col-md-6 order-0">
+                    <p class="text-200 text-center text-md-start">All rights Reserved &copy; Your Company, 2021</p>
+                </div>
+                <div class="col-md-6 order-1">
+                    <p class="text-200 text-center text-md-end">
+                        Made with&nbsp;
+                        <svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#A8B7FF" viewBox="0 0 16 16">
+                            <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"></path>
+                        </svg>&nbsp;by&nbsp;<a class="text-200 fw-bold" href="https://themewagon.com/" target="_blank">ThemeWagon </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="~/burak/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="~/burak/vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="~/burak/vendors/fontawesome/all.min.js"></script>
+    <script src="~/burak/assets/js/theme.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&amp;display=swap" rel="stylesheet">
+    <script src="~/burak/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/burak/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/burak/js/site.js" asp-append-version="true"></script>
+
+    <script class="u-script" type="text/javascript" src="~/kubra/comment/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="~/kubra/comment/nicepage.js" defer=""></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
+
+
 </body>
 </html>

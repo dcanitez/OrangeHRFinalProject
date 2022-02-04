@@ -19,6 +19,7 @@ namespace OrangeHRFinalProject.ViewModels.Commons.CommentViewModels
         public string PhotoFilePath { get; set; }        
         //Company Props
         public string CompanyName { get; set; }
+        public int NumberOfEmployees { get; set; }
         public string CompanyLogoPath { get; set; }
     }
 }
