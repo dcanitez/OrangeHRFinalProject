@@ -1,0 +1,256 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 mb-5  bg-gradient-dark" id="sidenav-main">
+    <div class="sidenav-header">
+        <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+        <a class="navbar-brand m-0">
+            <img src="~/burak/admin/assets/img/favicon/android-chrome-512x512.png" class="navbar-brand-img h-100" alt="main_logo">
+            <span class="ms-1 font-weight-bold text-white">Management Page</span>
+        </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto  max-height-900" id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white " href="~/burak/admin/pages/dashboard.html">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">dashboard</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Membership Settings</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white " href="~/burak/admin/pages/tables.html">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Companies</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white active bg-gradient-primary" href="~/burak/admin/pages/billing.html">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">receipt_long</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Descriptions</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="text-start pt-1">
+                    <h6 class="mb-0 mt-4">Adres Tanımlaması</h6>
+                </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3 text-end">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adresModal">
+                    Tanımla
+                </button>
+                <div class="modal fade" id="adresModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Üyelik Tipi</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <form name="yukleme" method="post">
+                                    <table border="0">
+                                        <tr>
+                                            <td>Excel Dosyası Seçiniz:</td>
+                                            <td><input type="file" name="dosya"></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-outline-dark">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="text-start pt-1">
+                    <h6 class="mb-0 mt-4">Harcama Tanımlaması</h6>
+                </div>
+                <form>
+                    <table border="0">
+                        <tr>
+                            <td>Harcama Tiplerinin Listelenmesi</td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3 text-end">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#harcamaModal">
+                    Tanımla
+                </button>
+                <div class="modal fade" id="harcamaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Harcama Tanımlaması</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h5>Harcama Tipi</h5><br />
+                                <input type="type" name="name" value="" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-outline-dark">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+
+                <div class="text-start pt-1">
+                    <h6 class="mb-0 mt-4">Ünvan Tanımlaması</h6>
+                </div>
+                <form>
+                    <table border="0">
+                        <tr>
+                            <td>Ünvan Tiplerinin Listelenmesi</td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3 text-end">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#unvanModal">
+                    Tanımla
+                </button>
+                <div class="modal fade" id="unvanModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tanımla</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h5>Ünvan Tipi</h5><br />
+                                <input type="type" name="name" value="" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-outline-dark">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3"></div>
+    <div class="col-3 mt-4">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="text-start pt-1">
+                    <h6 class="mb-0 mt-4">Departman Tanımlaması</h6>
+                </div>
+                <form>
+                    <table border="0">
+                        <tr>
+                            <td>Departman Tiplerinin Listelenmesi</td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3 text-end">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#departmanModal">
+                    Tanımla
+                </button>
+                <div class="modal fade" id="departmanModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tanımla</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h5>Departman Tipi</h5><br />
+                                <input type="type" name="name" value="" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-outline-dark">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3 mt-4">
+        <div class="card">
+            <div class="card-header p-3 pt-2">
+                <div class="text-start pt-1">
+                    <h6 class="mb-0 mt-4">İzin Tanımlaması</h6>
+                </div>
+                <form>
+                    <table border="0">
+                        <tr>
+                            <td>İzin Tiplerinin Listelenmesi</td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3 text-end">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#izinModal">
+                    Tanımla
+                </button>
+                <div class="modal fade" id="izinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tanımla</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h5>İzin Tipi</h5><br />
+                                <input type="type" name="name" value="" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-outline-dark">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
