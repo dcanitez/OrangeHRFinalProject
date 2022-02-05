@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model EmployeeLoginVM
+
 @{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Giriş";
 }
+
+<div class="row">
+    <form asp-action="EmployeeLogin">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="CorporeateEMail" class="form-label"></label>
+            <input asp-for="CorporeateEMail" class="form-control"/>
+            <span asp-validation-for="CorporeateEMail" class="form-text text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-control"/>
+            <span asp-validation-for="Password" class="form-text text-danger"></span>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <a class="" asp-action="Index">Parolamı Unuttum</a>
+    </div>
+    <div class="col-md-6 text-end">
+        <a class="" asp-action="Index">Kurumsal Giriş</a>
+    </div>
+</div>
+
+
