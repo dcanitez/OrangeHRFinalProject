@@ -10,16 +10,16 @@ namespace OrangeHRFinalProject.ViewModels.Commons.CompanyViewModels
     public class CompanyCreateVM
     {
         //[Required(ErrorMessage = "{0} girilmesi zorunludur.")]
-        [Display(Name = "Sektör")]
+        [Display(Name = "Sektör", Prompt =  "Sektör")]
         [MaxLength(50)]
         public string Sector { get; set; }
 
         //[Required(ErrorMessage = "{0} girilmesi zorunludur.")]
-        [Display(Name = "Şirket Adı")]
+        [Display(Name = "Şirket Adı", Prompt = "Şirket Adı")]
         [MaxLength(150)]
         public string CompanyName { get; set; }
 
-        [Display(Name = "Çalışan Sayısı")]
+        [Display(Name = "Çalışan Sayısı", Prompt = "Çalışan Sayısı")]
         public int NumberofEmployee { get; set; } = 1;
         
     }

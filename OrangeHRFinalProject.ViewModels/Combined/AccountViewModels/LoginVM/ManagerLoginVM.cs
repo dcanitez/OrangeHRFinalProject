@@ -9,7 +9,8 @@ namespace OrangeHRFinalProject.ViewModels.Combined.AccountViewModels.LoginVM
 {
     public class ManagerLoginVM
     {
-        [Required]
+        [Required(ErrorMessage = "{0} girilmesi zorunludur.")]
+        [Display(Name = "Alan Adı", Prompt = "Alan Adı")]
         public string FieldName { get; set; }
 
         [Required(ErrorMessage = "{0} girilmesi zorunludur.")]

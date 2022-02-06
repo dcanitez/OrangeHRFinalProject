@@ -1,9 +1,101 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model UserRegisterVM
+
 @{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<form  method="post">
-    <button asp-action="Register" asp-controller="Account">Register</button>
-</form>
+
+<div class="d-flex justify-content-center form_container withoverflowscrool">
+    <form asp-action="ForgotPassword">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="Employee.Password" class="input-group-text"><i class="fas fa-key"></i></label>
+            </div>
+            <input asp-for="Employee.Password" class="form-control" />
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Employee.Password" class="form-text text-white"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="Employee.CorporateEMail" class="input-group-text"><i class="fas fa-envelope"></i></label>
+            </div>
+            <input asp-for="Employee.CorporateEMail" class="form-control"  />
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Employee.CorporateEMail" class="form-text text-white"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="Employee.FirstName" class="input-group-text"><i class="fas fa-user"></i></label>
+            </div>
+            <input asp-for="Employee.FirstName" class="form-control" />
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Employee.FirstName" class="form-text text-white"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="Employee.LastName" class="input-group-text"><i class="fas fa-user"></i></label>
+            </div>
+            <input asp-for="Employee.LastName" class="form-control" />
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Employee.LastName" class="form-text text-white"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="Employee.CorporatePhoneNumber" class="input-group-text"><i class="fas fa-phone"></i></label>
+            </div>
+            <input asp-for="Employee.CorporatePhoneNumber" class="form-control" />
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Employee.CorporatePhoneNumber" class="form-text text-white"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="Company.Sector" class="input-group-text"><i class="fas fa-filter"></i></label>
+            </div>
+            <input asp-for="Company.Sector" class="form-control"  />
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Company.Sector" class="form-text text-white"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="Company.CompanyName" class="input-group-text"><i class="fas fa-briefcase"></i></label>
+            </div>
+            <input asp-for="Company.CompanyName" class="form-control"  />
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Company.CompanyName" class="form-text text-white"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="Company.NumberofEmployee" class="input-group-text"><i class="fas fa-id-card"></i></label>
+            </div>
+            <input asp-for="Company.NumberofEmployee" class="form-control" />
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Company.NumberofEmployee" class="form-text text-white"></span>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="Employee.IsDataProtectionRead" /> @Html.DisplayNameFor(model => model.Employee.IsDataProtectionRead)
+            </label>
+        </div>
+        <div class="input-group mb-3">
+            <span asp-validation-for="Employee.IsDataProtectionRead" class="form-text text-white"></span>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
