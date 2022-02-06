@@ -10,17 +10,49 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container h-100">
-        <div class="d-flex justify-content-center h-100">
-            <div class="user_card">
-                <div class="d-flex justify-content-center">
-                    <div class="brand_logo_container">
-                        <img src="~/siir/logo.jpeg" class="brand_logo" alt="Logo">
+    <div class="row p-0 container-fluid nopadding">
+        <div class="col-md-6 container-fluid nopadding">
+            <div class="w-100 p-3 container-fluid">
+                <div class="container h-100">
+                    <div class="d-flex justify-content-center h-100">
+                        <div class="user_card">
+                            <div class="d-flex justify-content-center">
+
+                                <div class="brand_logo_container">
+                                    <img src="~/siir/logo2.jpeg" class="brand_logo" alt="Logo">
+                                </div>
+                            </div>
+                            @RenderBody()
+                        </div>
                     </div>
                 </div>
-                @RenderBody()
+            </div>
+
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center nopadding" style="display: block; overflow: auto;">
+            <div id="loginLayoutCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/siir/loginimage.png" class="d-block h-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/siir/loginimage.png" class="d-block h-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/siir/loginimage.png" class="d-block h-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#loginLayoutCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#loginLayoutCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
+
     </div>
     <script src="~/siir/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/siir/lib/bootstrap/js/bootstrap.bundle.min.js"></script>

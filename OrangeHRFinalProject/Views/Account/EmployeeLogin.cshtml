@@ -2,34 +2,46 @@
 
 @{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
-    ViewData["Title"] = "Giriş";
+    ViewData["Title"] = "EmployeeLogin";
 }
 
-<div class="row">
+
+<div class="d-flex justify-content-center form_container">
     <form asp-action="EmployeeLogin">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="mb-3">
-            <label asp-for="CorporeateEMail" class="form-label"></label>
-            <input asp-for="CorporeateEMail" class="form-control"/>
-            <span asp-validation-for="CorporeateEMail" class="form-text text-danger"></span>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <label asp-for="CorporeateEMail" class="input-group-text"><i class="fas fa-user"></i></label>
+            </div>
+            <input asp-for="CorporeateEMail" class="form-control input_user" />
         </div>
-        <div class="mb-3">
-            <label asp-for="Password" class="form-label"></label>
-            <input asp-for="Password" class="form-control"/>
-            <span asp-validation-for="Password" class="form-text text-danger"></span>
+        <div class="input-group mb-3">
+            <span asp-validation-for="CorporeateEMail" class="form-text text-white"></span>
         </div>
-        <div class="d-grid gap-2">
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <label asp-for="Password" class="input-group-text"><i class="fas fa-key"></i></label>
+            </div>
+            <input asp-for="Password" class="form-control input_pass" />
+        </div>
+        <div class="input-group mb-2">
+            <span asp-validation-for="Password" class="form-text text-white"></span>
+        </div>
+        <div class="d-flex justify-content-center mt-3 login_container">
             <button type="submit" class="btn btn-primary">Giriş Yap</button>
         </div>
     </form>
 </div>
-<div class="row">
-    <div class="col-md-6">
-        <a class="" asp-action="Index">Parolamı Unuttum</a>
+
+<div class="mt-4">
+    <div class="d-flex justify-content-center links">
+        <a class="" asp-action="ForgotPassword">Parolamı Unuttum</a>
     </div>
-    <div class="col-md-6 text-end">
-        <a class="" asp-action="Index">Kurumsal Giriş</a>
+    <div class="d-flex justify-content-center links">
+        <a class="" asp-action="ManagerLogin">Kurumsal Giriş</a>
     </div>
 </div>
 
-
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
