@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\kubra\managerpanel\lib\" />
-    <Folder Include="wwwroot\siir\" />
     <Folder Include="wwwroot\uploads\admin\excelfiles\" />
     <Folder Include="wwwroot\uploads\companies\images\logos\" />
     <Folder Include="wwwroot\uploads\users\files\personelfiles\" />
